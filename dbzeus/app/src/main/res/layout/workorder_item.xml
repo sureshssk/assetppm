@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5sp"
+    android:layout_margin="5sp"
+    android:background="@drawable/drawable_assetborder">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="78sp"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/textWorkOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccentWhite"
+            android:gravity="left|center_vertical"
+            android:textSize="20sp"
+            android:text="Test adjfladfl"
+            android:layout_toLeftOf="@+id/checkWorkOrder"/>
+        <CheckBox
+            android:id="@+id/checkWorkOrder"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="32sp"
+            android:layout_height="32sp"
+            android:padding="5sp"/>
+        <EditText
+            android:id="@+id/textRemarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/checkWorkOrder"
+            android:minLines="3"
+            android:padding="5sp"
+            android:hint="Remarks"
+            android:textColor="@color/colorAccentBlack"
+            android:background="@drawable/bg_border_white"
+            android:layout_below="@+id/textWorkOrder"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_grad"
+    tools:context=".view.ui.AssetList">
+
+    <include
+        android:id="@+id/titleHeader"
+        layout="@layout/nav_header" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleHeader">
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12sp"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentLeft="true"
+            android:minHeight="42sp"
+            android:textColor="@color/colorAccentWhite"
+            style="@style/Widget.AppCompat.Light.DropDownItem.Spinner"
+            android:spinnerMode="dialog"
+            />
+        <Spinner
+            android:id="@+id/spinnerSubCategory"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12sp"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentRight="true"
+            android:minHeight="42sp"
+            android:textColor="@color/colorAccentWhite"
+            style="@style/Widget.AppCompat.Light.DropDownItem.Spinner"
+            android:spinnerMode="dialog" />
+
+        <LinearLayout
+            android:id="@+id/ltHeader"
+            android:layout_below="@+id/spinnerSubCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="8.5"
+            android:layout_marginTop="12sp"
+            android:orientation="horizontal"
+            android:paddingRight="5sp"
+            android:paddingLeft="5sp" >
+            <TextView
+                android:id="@+id/assetNo"
+                android:layout_width="0sp"
+                android:layout_weight="1.5"
+                android:layout_height="42sp"
+                android:text="Asset No."
+                android:gravity="left|center_vertical"
+                android:textColor="@color/colorAccentWhite"
+                android:singleLine="true"
+                android:background="@drawable/drawable_assetborder"
+                android:padding="1sp"
+                android:textStyle="bold"
+                android:textSize="12.5sp"
+                />
+
+            <TextView
+                android:id="@+id/assetName"
+                android:layout_weight="3"
+                android:layout_width="0sp"
+                android:layout_height="42sp"
+                android:layout_toRightOf="@+id/assetNo"
+                android:text="Asset Name"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/colorAccentWhite"
+                android:background="@drawable/drawable_assetborder"
+                android:padding="1sp"
+                android:textSize="12.5sp"
+                />
+            <TextView
+                android:id="@+id/assetSerial"
+                android:layout_weight="2.6"
+                android:layout_width="0sp"
+                android:layout_height="42sp"
+                android:layout_toRightOf="@+id/assetName"
+                android:text="Maintain. Date"
+                android:textStyle="bold"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/colorAccentWhite"
+                android:background="@drawable/drawable_assetborder"
+                android:padding="1sp"
+                android:textSize="12.5sp"
+                />
+            <TextView
+                android:id="@+id/assetModel"
+                android:layout_weight="1.4"
+                android:layout_width="0sp"
+                android:layout_height="42sp"
+                android:layout_toRightOf="@+id/assetSerial"
+                android:text="Model"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/colorAccentWhite"
+                android:background="@drawable/drawable_assetborder"
+                android:padding="1sp"
+                android:textSize="12.5sp"
+                />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAsset"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ltHeader"
+            android:paddingRight="5sp"
+            android:paddingLeft="5sp"/>
+
+        <RelativeLayout
+            android:id="@+id/rlNoData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/spinnerSubCategory"
+            android:visibility="gone"
+            android:padding="10sp">
+
+            <ImageView
+                android:id="@+id/imageNodata"
+                android:layout_width="250sp"
+                android:layout_height="250sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:tint="@color/colorAccentWhite"
+                android:src="@drawable/icon_nodata"/>
+            <TextView
+                android:layout_below="@+id/imageNodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Data Found"
+                android:textColor="@color/colorAccentWhite"
+                android:gravity="center_horizontal|center_vertical"
+                android:textSize="25sp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

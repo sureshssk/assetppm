@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_grad"
+    tools:context=".view.ui.SelectClient">
+
+    <include
+        android:id="@+id/titleHeader"
+        layout="@layout/nav_header" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleHeader">
+
+        <RelativeLayout
+            android:id="@+id/layoutOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/drawable_whitebg"
+            android:elevation="12sp"
+            android:paddingLeft="36sp"
+            android:paddingRight="36sp">
+
+            <TextView
+                android:id="@+id/textType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:text="Select Maintenance Type"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorTextGrey" />
+
+            <LinearLayout
+                android:id="@+id/lAudit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="6sp"
+                android:padding="5sp"
+                android:layout_below="@+id/textType"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drawable_border">
+           <ImageView
+               android:layout_width="100sp"
+               android:layout_height="100sp"
+               android:src="@drawable/icon_mtype_audit"
+               android:padding="5sp"
+               android:layout_gravity="center_horizontal"/>
+             <TextView
+                 android:text="Asset Audit"
+                 android:textColor="@color/colorAccentBlack"
+                 android:textSize="17.5sp"
+                 android:gravity="center_horizontal|center_vertical"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lPPM"
+                android:layout_below="@+id/lAudit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="6sp"
+                android:padding="5sp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drawable_border">
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:src="@drawable/icon_mtype_ppm"
+                    android:padding="5sp"
+                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:text="PPM"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="17.5sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lComplaince"
+                android:layout_below="@+id/lPPM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="6sp"
+                android:padding="5sp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/drawable_border">
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:src="@drawable/icon_mtype_sm"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="5sp"/>
+                <TextView
+                    android:text="Statutory Compliance"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="17.5sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
