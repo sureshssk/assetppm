@@ -1,9 +1,10 @@
 package ssk.dbzeus.ppm.view.ui
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
@@ -18,11 +19,9 @@ import ssk.dbzeus.ppm.service.model.entity.asset.Frequencylang
 import ssk.dbzeus.ppm.service.model.entity.asset.Workingstatus
 import ssk.dbzeus.ppm.service.model.entity.weekassets.AssetFrequencyDetailModel
 import ssk.dbzeus.ppm.service.viewmodel.ObjectViewModel
-import ssk.dbzeus.ppm.view.adapter.AssetListAdapter
 import ssk.dbzeus.ppm.view.adapter.WorkOrderAdapter
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class AssetDetails : BaseActivity() {
     lateinit var textWeek: TextView
@@ -30,15 +29,17 @@ class AssetDetails : BaseActivity() {
     lateinit var textStatusUpdate: TextView
     lateinit var textAssetNo: EditText
     lateinit var textAssetName: EditText
-    lateinit var assetStatus: EditText
+    private lateinit var assetStatus: EditText
+    lateinit var buttonBreakdown: Button
     lateinit var spinnerStatus: NiceSpinner
     private lateinit var objectViewModel: ObjectViewModel
-    private lateinit var freqList: ArrayList<Frequencylang>
-    private lateinit var statusList: ArrayList<Workingstatus>
 
     private lateinit var recyclerWorkOrder: RecyclerView
     private lateinit var layoutManager: LinearLayoutManager
-
+    private lateinit var selectedAsset: AssetFrequencyDetailModel
+    private lateinit var selectedWeek: String
+    private lateinit var freqList: ArrayList<Frequencylang>
+    private lateinit var statusList: ArrayList<Workingstatus>
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +48,8 @@ class AssetDetails : BaseActivity() {
         setTitle("Asset Details")
         val bundle: Bundle? = intent.extras
         //val userInfo = bundle!!.getSerializable("UserInfo") as? UserInfo
-        val selectedAsset = bundle!!.getSerializable("SelectedAsset") as AssetFrequencyDetailModel
-        val selectedWeek = bundle!!.getString("SelectedWeek").toString()
+        selectedAsset = bundle!!.getSerializable("SelectedAsset") as AssetFrequencyDetailModel
+        selectedWeek = bundle!!.getString("SelectedWeek").toString()
         freqList = bundle!!.getSerializable("FrequencyList") as ArrayList<Frequencylang>
 
         textWeek = findViewById(R.id.textViewWeek)
@@ -58,6 +59,7 @@ class AssetDetails : BaseActivity() {
         assetStatus = findViewById(R.id.assetCurrentStatus)
         textStatusUpdate = findViewById(R.id.textStatusUpdate)
         spinnerStatus = findViewById(R.id.spinnerStatus)
+        buttonBreakdown = findViewById(R.id.buttonBreakdown)
 
         recyclerWorkOrder = findViewById(R.id.recyclerWorkOrder)
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -97,16 +99,23 @@ class AssetDetails : BaseActivity() {
                     if (workingStatus?.workingStatusId == selectedAsset.workingStatusId)
                         assetStatus.setText(workingStatus.workingStatus)
                 }
-                statusList.filter { it.workingStatusId == selectedAsset.workingStatusId}
+                statusList.filter { it.workingStatusId == selectedAsset.workingStatusId }
                 spinnerStatus.attachDataSource(statusList)
             }
         })
-        objectViewModel.getAllWorkOrder(selectedAsset.assetId!!,this).observe(this, Observer { woList ->
-            woList?.let { it ->
-                val workOrderAdapter = WorkOrderAdapter(it as ArrayList<Assetworkorder>,this)
-                recyclerWorkOrder.adapter = workOrderAdapter
-            }
-        })
-
+        objectViewModel.getAllWorkOrder(selectedAsset.assetId!!, this)
+            .observe(this, Observer { woList ->
+                woList?.let { it ->
+                    val workOrderAdapter = WorkOrderAdapter(it as ArrayList<Assetworkorder>, this)
+                    recyclerWorkOrder.adapter = workOrderAdapter
+                }
+            })
+        buttonBreakdown.setOnClickListener {
+            val intent = Intent(this, Breakdown::class.java)
+            intent.putExtra("SelectedAsset", selectedAsset)
+            intent.putExtra("SelectedWeek", selectedWeek)
+            intent.putExtra("FrequencyList", freqList)
+            startActivity(intent)
+        }
     }
 }

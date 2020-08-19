@@ -18,8 +18,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSubmit"
         tools:ignore="MissingConstraints">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorAccentWhite"
-            android:layout_margin="16sp">
+            android:layout_margin="16sp"
+            >
 
             <TextView
                 android:id="@+id/textViewWeek"
@@ -71,6 +72,22 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+
+            <Button
+                android:id="@+id/buttonBreakdown"
+                android:layout_width="112sp"
+                android:layout_height="42sp"
+                android:layout_below="@+id/textViewFreq"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10sp"
+                android:text="Breakdown"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="@color/colorAccentWhite"
+                android:background="@android:color/holo_red_dark"
+                android:layout_alignTop="@+id/textInputAssetno"
+                android:layout_alignBottom="@+id/textInputAssetno"
+                android:elevation="7sp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputAssetName"
@@ -157,19 +174,38 @@
             android:layout_below="@+id/rlAsset"
             android:layout_marginLeft="12sp"
             android:layout_marginRight="12sp"
-            tools:ignore="NotSibling" >
+            tools:ignore="NotSibling"
+            >
         <TextView
+            android:id="@+id/labelWorkorder"
             android:text="Assset Work Order"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            />
 
          <androidx.recyclerview.widget.RecyclerView
              android:id="@+id/recyclerWorkOrder"
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/labelWorkorder"
+             />
+
         </RelativeLayout>
     </RelativeLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="12sp"
+        android:text="Submit"
+        android:textSize="20sp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:textColor="@color/colorAccentWhite"
+        android:background="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="7sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
