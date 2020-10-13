@@ -20,8 +20,7 @@ data class CategoryandLang(
     val assetCategoryName: String?,
     val assetCategoryShortName: String?,
     val languageId: Int?
-)
-{
+) {
     override fun toString(): String {
         return assetCategoryName.toString()
     }

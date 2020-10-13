@@ -23,7 +23,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="12sp">
 
             <RelativeLayout
@@ -122,7 +122,7 @@
                     android:textColor="@color/colorAccentBlack"
                     android:layout_below="@+id/textInputAssetName"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentEnd="true"/>
 
                 <org.angmarch.views.NiceSpinner
                     android:id="@+id/spinnerStatus"
@@ -130,8 +130,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/textInputAssetCurrStatus"
                     android:layout_below="@+id/textStatusUpdate"
-                    android:layout_marginRight="5sp"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_marginEnd="5sp"
+                    android:layout_alignParentEnd="true"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputAssetRemarks"
@@ -159,7 +159,7 @@
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="48sp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="12sp"
         android:text="Report Breakdown"
         android:textSize="20sp"

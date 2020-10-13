@@ -36,13 +36,15 @@
 
             <TextView
                 android:id="@+id/textViewWeek"
-                android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="4dp"
                 android:gravity="center_horizontal|center_vertical"
-                android:textSize="20sp"
+                android:text="Week 24"
                 android:textColor="@color/colorAccentBlack"
-                android:text="Week 24"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/textViewFreq"
                 android:layout_width="match_parent"
@@ -179,7 +181,7 @@
         <TextView
             android:id="@+id/labelWorkorder"
             android:text="Assset Work Order"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -199,7 +201,7 @@
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="48sp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="12sp"
         android:text="Submit"
         android:textSize="20sp"
