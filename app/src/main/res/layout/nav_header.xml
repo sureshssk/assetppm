@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="6dp"
+    android:fitsSystemWindows="true"
+    android:theme="@style/AppThemeAB">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_collapseMode="pin"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/AppThemeAB">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/navigation_header_container"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageView
+                    android:id="@+id/appIcon"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:padding="5sp"
+                    android:src="@drawable/icon_appicon"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/textAppname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/rlCart"
+                    android:layout_toRightOf="@+id/appIcon"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/app_name"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/textActivityTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/rlCart"
+                    android:layout_toRightOf="@+id/appIcon"
+                    android:gravity="left|center_vertical"
+                    android:text="Asset List"
+                    android:visibility="gone"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="20sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlCart"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5sp"
+                    android:layout_toLeftOf="@+id/logoutIcon">
+
+                    <ImageView
+                        android:id="@+id/offlineIcon"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@null"
+                        android:padding="6.5sp"
+                        android:src="@drawable/icon_offlinedata" />
+
+                    <TextView
+                        android:id="@+id/cartSize"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_alignEnd="@id/offlineIcon"
+                        android:layout_alignRight="@id/offlineIcon"
+                        android:layout_marginRight="5sp"
+                        android:background="@drawable/item_count"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="5"
+                        android:textColor="@color/colorAccentWhite"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        tools:targetApi="lollipop" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/logoutIcon"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="6.5sp"
+                    android:src="@drawable/icon_logout" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>

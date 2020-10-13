@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5sp"
+    android:background="@drawable/drawable_assetborder"
+    android:padding="5sp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="78sp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textWorkOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/checkWorkOrder"
+            android:gravity="left|center_vertical"
+            android:text="Test adjfladfl"
+            android:textColor="@color/colorAccentWhite"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkWorkOrder"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="2.5sp"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:button="@null"
+            android:alpha="0.9"
+            android:background="@drawable/checkbox_selector"/>
+
+        <EditText
+            android:id="@+id/textRemarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textWorkOrder"
+            android:layout_toLeftOf="@+id/checkWorkOrder"
+            android:background="@drawable/bg_border_white"
+            android:hint="Remarks"
+            android:minLines="3"
+            android:padding="5sp"
+            android:textColor="@color/colorAccentBlack" />
+    </RelativeLayout>
+
+</RelativeLayout>

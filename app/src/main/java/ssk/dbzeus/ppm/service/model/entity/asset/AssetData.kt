@@ -1,0 +1,41 @@
+package ssk.dbzeus.ppm.service.model.entity.asset
+
+import ssk.dbzeus.ppm.service.model.asset.*
+
+data class AssetData(
+    val amc: List<Amc>,
+    val amclang: List<Amclang>,
+    val assetbreakdownhistory: List<Assetbreakdownhistory>,
+    val assetbreakdownhistoryattachment: List<Any>,
+    val assetmaintaintype: List<Assetmaintaintype>,
+    val assetmiantaintypelang: List<Assetmiantaintypelang>,
+    val assets: List<Asset>,
+    val assetsmap: List<Assetsmap>,
+    val assetstatus: List<Assetstatu>,
+    val assetstatuslang: List<Assetstatuslang>,
+    val assettype: List<Assettype>,
+    val assettypelang: List<Assettypelang>,
+    val assetworkorder: List<Assetworkorder>,
+    val building: List<Building>,
+    val buildinglang: List<Buildinglang>,
+    val category: List<Category>,
+    val categorylang: List<Categorylang>,
+    val department: List<Department>,
+    val departmentlang: List<Departmentlang>,
+    val facility: List<Facility>,
+    val facilitylang: List<Facilitylang>,
+    val floor: List<Floor>,
+    val frequency: List<Frequency>,
+    val frequencydetails: List<Frequencydetail>,
+    val frequencylang: List<Frequencylang>,
+    val frequnecymaintanance: List<Frequnecymaintanance>,
+    val space: List<Space>,
+    val subcategory: List<Subcategory>,
+    val subcategorylang: List<Subcategorylang>,
+    val uom: List<Uom>,
+    val uomlang: List<Uomlang>,
+    val vendor: List<Vendor>,
+    val vendorlang: List<Vendorlang>,
+    val wing: List<Wing>,
+    val workingstatus: List<Workingstatus>
+)

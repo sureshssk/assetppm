@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100sp"
+    android:layout_height="132sp"
+    tools:context=".view.ui.MainActivity"
+    android:layout_margin="5sp"
+    android:background="@drawable/bg_grad">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/bg_border_white"
+        >
+       <TextView
+           android:id="@+id/textWeekno"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Week 1"
+           android:textStyle="bold"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="5sp"
+           android:textColor="@color/colorAccentWhite"
+           android:gravity="center_vertical|center_horizontal"/>
+       <TextView
+           android:id="@+id/textWeekDate"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/textWeekno"
+           android:text="28-07-2020-28-07-2020"
+           android:alpha="0.75"
+           android:textColor="@color/colorAccentWhite"
+           android:gravity="center_vertical|center_horizontal"/>
+        <ImageView
+            android:id="@+id/weekIcon"
+            android:layout_width="56sp"
+            android:layout_height="56sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textWeekDate"
+            android:layout_above="@+id/textCount"
+            android:alpha="0.95"
+            android:padding="2.5sp"
+            android:src="@drawable/icon_weekcalendar"
+            android:tint="@color/colorAccentWhite" />
+        <TextView
+            android:id="@+id/textCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Planned-10"
+            android:padding="2.5sp"
+            android:layout_margin="0.5sp"
+            android:textColor="@color/colorAccentWhite"
+            android:background="@color/colorTransGrey"
+            android:gravity="center_vertical|center_horizontal"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
