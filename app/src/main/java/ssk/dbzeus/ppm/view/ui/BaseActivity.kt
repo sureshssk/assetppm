@@ -16,6 +16,8 @@ import java.io.File
 
 open class BaseActivity : AppCompatActivity() {
     private val permissionCODE = 1000
+    private val permissionCODECAMERA = 1001
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,20 +34,21 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    open fun setTitle(titleText: String){
+    open fun setTitle(titleText: String) {
         textActivityTitle.visibility = View.VISIBLE
         textActivityTitle.text = titleText
         textAppname.visibility = View.GONE
     }
 
-    open fun getPermission(){
+    open fun getPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
-                ContextCompat.checkSelfPermission(
+            if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
-                )
-                == PackageManager.PERMISSION_DENIED
+                ) == PackageManager.PERMISSION_DENIED || ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_DENIED
             ) {
                 val permission = arrayOf(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -63,7 +66,33 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    open fun getPermissionCamera() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_DENIED || ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_DENIED
+            ) {
+                val permission = arrayOf(
+                    Manifest.permission.CAMERA
+                )
+                requestPermissions(permission, permissionCODECAMERA)
+            } else {
+                startActivity(Intent(this, QrcodeAsset::class.java))
+            }
+        } else {
+            startActivity(Intent(this, QrcodeAsset::class.java))
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             permissionCODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
@@ -72,6 +101,15 @@ open class BaseActivity : AppCompatActivity() {
                     val folder = getExternalFilesDir("/sdcard/")
                     val f = File(folder, "AssetPPM")
                     f.mkdir()
+                } else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+            permissionCODECAMERA -> {
+                if (grantResults.isNotEmpty() && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+                    startActivity(Intent(this, QrcodeAsset::class.java))
                 } else {
                     Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 }

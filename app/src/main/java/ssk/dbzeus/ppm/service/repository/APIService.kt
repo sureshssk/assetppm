@@ -9,16 +9,18 @@ import retrofit2.http.Query
 import ssk.dbzeus.ppm.service.model.entity.asset.AssetData
 import ssk.dbzeus.ppm.service.model.entity.userdata.UserData
 import ssk.dbzeus.ppm.service.model.entity.weekassets.WeekAssets
+import ssk.dbzeus.ppm.utils.ApiUrls
+
 
 interface APIService {
 
-    @POST("LogInAPI/LogIn/")
+    @POST(ApiUrls.login)
     fun login(@Body fieldData: RequestBody): retrofit2.Call<UserData>
 
-    @GET("AssetAPI/GetAssetBasedInfo")
+    @GET(ApiUrls.getAssetbaseInfo)
     fun getAssets(@Query("UserId") userId: Int): retrofit2.Call<AssetData>
 
-    @GET("AssetFrequencyMaintenanceAPI/GetAssetMaintenanceDetail")
+    @GET(ApiUrls.getAssetMaintainceDetails)
     fun getWeekAssets(@Query("UserId") userId: Int): retrofit2.Call<WeekAssets>
 }
 

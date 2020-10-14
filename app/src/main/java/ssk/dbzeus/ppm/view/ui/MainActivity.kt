@@ -55,6 +55,9 @@ open class MainActivity : BaseActivity() {
         textManual.setOnClickListener {
             startActivity(Intent(this, SelectMaintenance::class.java))
         }
+        rlQrcode.setOnClickListener(View.OnClickListener {
+            getPermissionCamera()
+        })
     }
 
     private fun assetAPI(userId: Int) {
@@ -186,13 +189,15 @@ open class MainActivity : BaseActivity() {
             }
         })
     }
+
     private fun weekAssetAPI(userId: Int) {
         val retIn = RetrofitInstance.getRetrofitInstance_VMS().create(APIService::class.java)
         loading.visibility = View.VISIBLE
         retIn.getWeekAssets(userId).enqueue(object : Callback<WeekAssets> {
             override fun onFailure(call: Call<WeekAssets>, t: Throwable) {
                 loading.visibility = View.GONE
-                Toast.makeText(applicationContext, "Week Asset Fetch Error:$t", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Week Asset Fetch Error:$t", Toast.LENGTH_LONG)
+                    .show()
             }
 
             override fun onResponse(
@@ -208,7 +213,11 @@ open class MainActivity : BaseActivity() {
                         }
                     }
 
-                    Toast.makeText(applicationContext, "Week Details Fetch success!", Toast.LENGTH_LONG)
+                    Toast.makeText(
+                        applicationContext,
+                        "Week Details Fetch success!",
+                        Toast.LENGTH_LONG
+                    )
                         .show()
                 } else {
                     Toast.makeText(applicationContext, "Week Details failed!", Toast.LENGTH_LONG)
