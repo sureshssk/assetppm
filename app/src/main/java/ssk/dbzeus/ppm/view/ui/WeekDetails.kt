@@ -35,8 +35,8 @@ class WeekDetails : BaseActivity() {
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        weekViewModel.allWeeks.observe(this, Observer { weeks ->
-            weeks?.let {
+        weekViewModel.allWeeks.observe(this, Observer { weeksdata ->
+            weeksdata?.let {
                 val recyclerWeekAdapter = WeekAdapter(it, this)
                 recyclerWeek.adapter = recyclerWeekAdapter
             }

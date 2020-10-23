@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.AssetDetails"
-    android:background="@drawable/bg_grad">
+    android:background="@drawable/bg_grad"
+    tools:context=".view.ui.AssetDetails">
 
     <include
         android:id="@+id/titleHeader"
@@ -14,200 +14,233 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/titleHeader"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/buttonSubmit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleHeader"
         tools:ignore="MissingConstraints">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12sp">
-
         <RelativeLayout
-            android:id="@+id/rlAsset"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccentWhite"
-            android:layout_margin="16sp"
-            >
-
-            <TextView
-                android:id="@+id/textViewWeek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="4dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Week 24"
-                android:textColor="@color/colorAccentBlack"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textViewFreq"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewWeek"
-                android:gravity="center_horizontal|center_vertical"
-                android:textSize="18sp"
-                android:textColor="@color/colorAccentBlack"
-                android:text="Week 24"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAssetno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:layout_below="@+id/textViewFreq"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <EditText
-                    android:id="@+id/assetNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="Asset No."
-                    android:inputType="textWebEmailAddress"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <Button
-                android:id="@+id/buttonBreakdown"
-                android:layout_width="112sp"
-                android:layout_height="42sp"
-                android:layout_below="@+id/textViewFreq"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10sp"
-                android:text="Breakdown"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:textColor="@color/colorAccentWhite"
-                android:background="@android:color/holo_red_dark"
-                android:layout_alignTop="@+id/textInputAssetno"
-                android:layout_alignBottom="@+id/textInputAssetno"
-                android:elevation="7sp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAssetName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:layout_below="@+id/textInputAssetno"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <EditText
-                    android:id="@+id/assetName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="Asset Name"
-                    android:inputType="textWebEmailAddress"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAssetCurrStatus"
-                android:layout_width="wrap_content"
-                android:minWidth="150sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:layout_below="@+id/textInputAssetName"
-                android:layout_alignParentLeft="true">
-
-                <EditText
-                    android:id="@+id/assetCurrentStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="Current Status"
-                    android:inputType="text"
-                     />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/textStatusUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:minWidth="150sp"
-                android:textSize="15sp"
-                android:visibility="visible"
-                android:textColor="@color/colorAccentBlack"
-                android:layout_below="@+id/textInputAssetName"
-                android:gravity="center_horizontal|center_vertical"
-                android:layout_alignParentRight="true"/>
-
-            <org.angmarch.views.NiceSpinner
-                android:id="@+id/spinnerStatus"
-                android:layout_width="150sp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textInputAssetCurrStatus"
-                android:layout_below="@+id/textStatusUpdate"
-                android:layout_marginRight="5sp"
-                android:layout_alignParentRight="true"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAssetRemarks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:layout_below="@+id/textInputAssetCurrStatus"
-                >
-
-                <EditText
-                    android:id="@+id/assetRemarks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints=""
-                    android:hint="Remarks"
-                    android:inputType="text"
-                    android:minLines="3"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rlAsset"
-            android:layout_marginLeft="12sp"
-            android:layout_marginRight="12sp"
-            tools:ignore="NotSibling"
-            >
-        <TextView
-            android:id="@+id/labelWorkorder"
-            android:text="Assset Work Order"
-            android:layout_alignParentStart="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:padding="12sp">
 
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/recyclerWorkOrder"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_below="@+id/labelWorkorder"
-             />
+            <RelativeLayout
+                android:id="@+id/rlAsset"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16sp"
+                android:background="@color/colorAccentWhite">
 
+                <TextView
+                    android:id="@+id/textViewWeek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Week 24"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textViewFreq"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWeek"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Week 24"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAssetno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewFreq"
+                    android:layout_margin="5sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <EditText
+                        android:id="@+id/assetNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:hint="Asset No."
+                        android:inputType="textWebEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/buttonBreakdown"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="112sp"
+                    android:layout_height="42sp"
+                    android:layout_below="@+id/textViewFreq"
+                    android:layout_alignTop="@+id/textInputAssetno"
+                    android:layout_alignBottom="@+id/textInputAssetno"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10sp"
+                    android:background="@android:color/holo_red_dark"
+                    android:elevation="7sp"
+                    android:text="Breakdown"
+                    android:textColor="@color/colorAccentWhite" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAssetName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textInputAssetno"
+                    android:layout_margin="5sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <EditText
+                        android:id="@+id/assetName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:hint="Asset Name"
+                        android:inputType="textWebEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAssetCurrStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textInputAssetName"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="5sp"
+                    android:minWidth="150sp">
+
+                    <EditText
+                        android:id="@+id/assetCurrentStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:hint="Current Status"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textStatusUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textInputAssetName"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="5sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:minWidth="150sp"
+                    android:textColor="@color/colorAccentBlack"
+                    android:textSize="15sp"
+                    android:visibility="visible" />
+
+                <org.angmarch.views.NiceSpinner
+                    android:id="@+id/spinnerStatus"
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textStatusUpdate"
+                    android:layout_alignBaseline="@+id/textInputAssetCurrStatus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputAssetRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textInputAssetCurrStatus"
+                    android:layout_margin="5sp">
+
+                    <EditText
+                        android:id="@+id/assetRemarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:hint="Remarks"
+                        android:inputType="text"
+                        android:minLines="3" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textInputAssetRemarks"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/beforeImage"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_weight="1"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:text="beforeImage"
+                        android:textAllCaps="false"
+                        android:textSize="12sp" />
+
+
+                    <Button
+                        android:id="@+id/afterImage"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_weight="1"
+                        android:text="afterImage"
+                        android:textAllCaps="false"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textSize="12sp" />
+
+
+                    <Button
+                        android:id="@+id/sigImage"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:text="Signature"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlAsset"
+                android:layout_marginLeft="12sp"
+                android:layout_marginRight="12sp"
+                tools:ignore="NotSibling">
+
+                <TextView
+                    android:id="@+id/labelWorkorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Assset Work Order" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerWorkOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/labelWorkorder" />
+
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/buttonSubmit"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="48sp"
         android:layout_alignParentEnd="true"
         android:layout_margin="12sp"
-        android:text="Submit"
-        android:textSize="20sp"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:textColor="@color/colorAccentWhite"
         android:background="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:elevation="7sp"/>
+        android:elevation="7sp"
+        android:text="Submit"
+        android:textColor="@color/colorAccentWhite"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

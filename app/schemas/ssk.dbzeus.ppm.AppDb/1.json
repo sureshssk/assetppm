@@ -1,0 +1,1806 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "3abdefcee13da33f18be474749eb7d92",
+    "entities": [
+      {
+        "tableName": "UserInfo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `buildingId` INTEGER, `cityId` INTEGER, `cityName` TEXT, `clientGroupId` INTEGER, `clientId` INTEGER NOT NULL, `clientName` TEXT, `clientRoleId` INTEGER, `contactNumber` TEXT, `countryId` INTEGER, `countryName` TEXT, `designation` TEXT, `deviceToken` TEXT, `deviceType` TEXT, `facilityId` INTEGER NOT NULL, `floorId` INTEGER, `multiLanguages` TEXT, `password` TEXT, `personalEmail` TEXT, `photoPath` TEXT, `spaceId` INTEGER, `stateId` INTEGER, `stateName` TEXT, `tenantId` INTEGER, `userEmail` TEXT, `userId` INTEGER NOT NULL, `userKey` TEXT, `userName` TEXT, `wingId` INTEGER, `zipCode` TEXT, PRIMARY KEY(`userId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingId",
+            "columnName": "buildingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityId",
+            "columnName": "cityId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityName",
+            "columnName": "cityName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientGroupId",
+            "columnName": "clientGroupId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clientName",
+            "columnName": "clientName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientRoleId",
+            "columnName": "clientRoleId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "contactNumber",
+            "columnName": "contactNumber",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "countryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryName",
+            "columnName": "countryName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "designation",
+            "columnName": "designation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceToken",
+            "columnName": "deviceToken",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deviceType",
+            "columnName": "deviceType",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityId",
+            "columnName": "facilityId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "floorId",
+            "columnName": "floorId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "multiLanguages",
+            "columnName": "multiLanguages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "personalEmail",
+            "columnName": "personalEmail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photoPath",
+            "columnName": "photoPath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spaceId",
+            "columnName": "spaceId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateId",
+            "columnName": "stateId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateName",
+            "columnName": "stateName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tenantId",
+            "columnName": "tenantId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userEmail",
+            "columnName": "userEmail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "userId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userKey",
+            "columnName": "userKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "userName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wingId",
+            "columnName": "wingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "zipCode",
+            "columnName": "zipCode",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "userId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Client",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` TEXT, `cityId` INTEGER, `cityName` TEXT, `clientGroupId` TEXT, `clientGroupName` TEXT, `clientId` INTEGER NOT NULL, `clientImage` TEXT, `clientKey` TEXT, `clientName` TEXT, `clientShortName` TEXT, `contactNumber` TEXT, `continentId` INTEGER, `continentName` TEXT, `countryId` INTEGER, `countryName` TEXT, `mailId` TEXT, `multiLanguages` TEXT, `stateId` INTEGER, `stateName` TEXT, `zipCode` TEXT, PRIMARY KEY(`clientId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityId",
+            "columnName": "cityId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityName",
+            "columnName": "cityName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientGroupId",
+            "columnName": "clientGroupId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientGroupName",
+            "columnName": "clientGroupName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clientImage",
+            "columnName": "clientImage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientKey",
+            "columnName": "clientKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientName",
+            "columnName": "clientName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientShortName",
+            "columnName": "clientShortName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "contactNumber",
+            "columnName": "contactNumber",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "continentId",
+            "columnName": "continentId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "continentName",
+            "columnName": "continentName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "countryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryName",
+            "columnName": "countryName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mailId",
+            "columnName": "mailId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "multiLanguages",
+            "columnName": "multiLanguages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateId",
+            "columnName": "stateId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateName",
+            "columnName": "stateName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "zipCode",
+            "columnName": "zipCode",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "clientId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Department",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `clientId` INTEGER, `clientName` TEXT, `departmentId` INTEGER, `departmentKey` TEXT, `departmentLangId` INTEGER, `departmentName` TEXT, `departmentShortName` TEXT, `languageId` TEXT, `multiLanguages` TEXT, PRIMARY KEY(`departmentId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientName",
+            "columnName": "clientName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departmentId",
+            "columnName": "departmentId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departmentKey",
+            "columnName": "departmentKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departmentLangId",
+            "columnName": "departmentLangId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departmentName",
+            "columnName": "departmentName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departmentShortName",
+            "columnName": "departmentShortName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "languageId",
+            "columnName": "languageId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "multiLanguages",
+            "columnName": "multiLanguages",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "departmentId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Facility",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` TEXT, `cityId` INTEGER, `cityName` TEXT, `clientId` INTEGER, `contactNumber` TEXT, `countryId` TEXT, `countryName` TEXT, `facilityId` INTEGER, `facilityKey` TEXT, `facilityName` TEXT, `facilityShortName` TEXT, `facilitySqft` TEXT, `fourWheelerSlots` TEXT, `landMark` TEXT, `mailId` TEXT, `multiLanguages` TEXT, `stateId` TEXT, `stateName` TEXT, `tellerDetails` TEXT, `twoWheelerSlots` TEXT, `zipCode` TEXT, PRIMARY KEY(`facilityId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityId",
+            "columnName": "cityId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cityName",
+            "columnName": "cityName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "contactNumber",
+            "columnName": "contactNumber",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryId",
+            "columnName": "countryId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countryName",
+            "columnName": "countryName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityId",
+            "columnName": "facilityId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityKey",
+            "columnName": "facilityKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityName",
+            "columnName": "facilityName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityShortName",
+            "columnName": "facilityShortName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilitySqft",
+            "columnName": "facilitySqft",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fourWheelerSlots",
+            "columnName": "fourWheelerSlots",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "landMark",
+            "columnName": "landMark",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mailId",
+            "columnName": "mailId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "multiLanguages",
+            "columnName": "multiLanguages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateId",
+            "columnName": "stateId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateName",
+            "columnName": "stateName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tellerDetails",
+            "columnName": "tellerDetails",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "twoWheelerSlots",
+            "columnName": "twoWheelerSlots",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "zipCode",
+            "columnName": "zipCode",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "facilityId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Building",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `buildingId` INTEGER, `buildingKey` TEXT, `cDate` TEXT, `cuid` INTEGER, `facilityId` INTEGER, `mDate` TEXT, `muid` INTEGER, `version` TEXT, PRIMARY KEY(`buildingId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingId",
+            "columnName": "buildingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingKey",
+            "columnName": "buildingKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityId",
+            "columnName": "facilityId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "buildingId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Buildinglang",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`buildingId` INTEGER, `buildingLangId` INTEGER, `buildingLangKey` TEXT, `buildingName` TEXT, `buildingShortName` TEXT, `languageId` INTEGER, PRIMARY KEY(`buildingLangId`))",
+        "fields": [
+          {
+            "fieldPath": "buildingId",
+            "columnName": "buildingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingLangId",
+            "columnName": "buildingLangId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingLangKey",
+            "columnName": "buildingLangKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingName",
+            "columnName": "buildingName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingShortName",
+            "columnName": "buildingShortName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "languageId",
+            "columnName": "languageId",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "buildingLangId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Floor",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `buildingId` INTEGER, `cDate` TEXT, `cuid` INTEGER, `floorId` INTEGER, `floorKey` TEXT, `floorName` TEXT, `floorSqft` TEXT, `mDate` TEXT, `muid` INTEGER, `version` TEXT, PRIMARY KEY(`floorId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingId",
+            "columnName": "buildingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "floorId",
+            "columnName": "floorId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "floorKey",
+            "columnName": "floorKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "floorName",
+            "columnName": "floorName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "floorSqft",
+            "columnName": "floorSqft",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "floorId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Wing",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `cDate` TEXT, `cuid` INTEGER, `floorId` INTEGER, `mDate` TEXT, `muid` INTEGER, `version` TEXT, `wingId` INTEGER, `wingKey` TEXT, `wingName` TEXT, PRIMARY KEY(`wingId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "floorId",
+            "columnName": "floorId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wingId",
+            "columnName": "wingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wingKey",
+            "columnName": "wingKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wingName",
+            "columnName": "wingName",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "wingId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Space",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `cDate` TEXT, `cuid` INTEGER, `mDate` TEXT, `muid` INTEGER, `spaceId` INTEGER, `spaceKey` TEXT, `spaceName` TEXT, `version` TEXT, `wingId` INTEGER, PRIMARY KEY(`spaceId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spaceId",
+            "columnName": "spaceId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spaceKey",
+            "columnName": "spaceKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spaceName",
+            "columnName": "spaceName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wingId",
+            "columnName": "wingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "spaceId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Asset",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `amcAmount` TEXT, `amcTypeId` INTEGER, `assetId` INTEGER, `assetImage` TEXT, `assetKey` TEXT, `assetName` TEXT, `assetNo` TEXT, `assetStatusId` INTEGER, `assetTypeId` INTEGER, `cDate` TEXT, `cuid` INTEGER, `endDate` TEXT, `installationYear` INTEGER, `invoiceNo` TEXT, `mDate` TEXT, `model` TEXT, `muid` INTEGER, `oemId` INTEGER, `periodMonth` INTEGER, `purchaseDate` TEXT, `purchaseValue` REAL, `serialNo` TEXT, `startDate` TEXT, `uomId` INTEGER, `vendorId` INTEGER, `version` TEXT, `warrantyEndDate` TEXT, `yom` INTEGER, PRIMARY KEY(`assetId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "amcAmount",
+            "columnName": "amcAmount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "amcTypeId",
+            "columnName": "amcTypeId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetId",
+            "columnName": "assetId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetImage",
+            "columnName": "assetImage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetKey",
+            "columnName": "assetKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetName",
+            "columnName": "assetName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetNo",
+            "columnName": "assetNo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetStatusId",
+            "columnName": "assetStatusId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetTypeId",
+            "columnName": "assetTypeId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "endDate",
+            "columnName": "endDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "installationYear",
+            "columnName": "installationYear",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "invoiceNo",
+            "columnName": "invoiceNo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "model",
+            "columnName": "model",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "oemId",
+            "columnName": "oemId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "periodMonth",
+            "columnName": "periodMonth",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "purchaseDate",
+            "columnName": "purchaseDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "purchaseValue",
+            "columnName": "purchaseValue",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "serialNo",
+            "columnName": "serialNo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "startDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "uomId",
+            "columnName": "uomId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vendorId",
+            "columnName": "vendorId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "warrantyEndDate",
+            "columnName": "warrantyEndDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "yom",
+            "columnName": "yom",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Assetsmap",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `assetCategoryId` INTEGER, `assetId` INTEGER, `assetMapId` INTEGER, `assetMapKey` TEXT, `assetSubCategoryId` INTEGER, `buildingId` INTEGER, `cDate` TEXT, `clientId` INTEGER, `cuid` INTEGER, `departmentId` INTEGER, `description` TEXT, `facilityId` INTEGER, `floorId` INTEGER, `mDate` TEXT, `muid` INTEGER, `spaceId` INTEGER, `version` TEXT, `wingId` INTEGER, PRIMARY KEY(`assetMapId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryId",
+            "columnName": "assetCategoryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetId",
+            "columnName": "assetId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetMapId",
+            "columnName": "assetMapId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetMapKey",
+            "columnName": "assetMapKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetSubCategoryId",
+            "columnName": "assetSubCategoryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "buildingId",
+            "columnName": "buildingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departmentId",
+            "columnName": "departmentId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facilityId",
+            "columnName": "facilityId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "floorId",
+            "columnName": "floorId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spaceId",
+            "columnName": "spaceId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wingId",
+            "columnName": "wingId",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetMapId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Category",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER, `assetCategoryId` INTEGER, `assetCategoryKey` TEXT, `cDate` TEXT, `clientId` INTEGER, `cuid` INTEGER, `mDate` TEXT, `muid` INTEGER, `version` TEXT, PRIMARY KEY(`assetCategoryId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryId",
+            "columnName": "assetCategoryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryKey",
+            "columnName": "assetCategoryKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetCategoryId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Categorylang",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`assetCategoryId` INTEGER, `assetCategoryLangId` INTEGER, `assetCategoryLangKey` TEXT, `assetCategoryName` TEXT, `assetCategoryShortName` TEXT, `languageId` INTEGER, PRIMARY KEY(`assetCategoryLangId`))",
+        "fields": [
+          {
+            "fieldPath": "assetCategoryId",
+            "columnName": "assetCategoryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryLangId",
+            "columnName": "assetCategoryLangId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryLangKey",
+            "columnName": "assetCategoryLangKey",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryName",
+            "columnName": "assetCategoryName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetCategoryShortName",
+            "columnName": "assetCategoryShortName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "languageId",
+            "columnName": "languageId",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetCategoryLangId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Subcategory",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER NOT NULL, `assetCategoryId` INTEGER NOT NULL, `assetSubCategoryId` INTEGER NOT NULL, `assetSubCategoryKey` TEXT NOT NULL, `cDate` TEXT NOT NULL, `clientId` INTEGER NOT NULL, `cuid` INTEGER NOT NULL, `mDate` TEXT NOT NULL, `muid` INTEGER NOT NULL, `version` TEXT NOT NULL, PRIMARY KEY(`assetSubCategoryId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetCategoryId",
+            "columnName": "assetCategoryId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetSubCategoryId",
+            "columnName": "assetSubCategoryId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetSubCategoryKey",
+            "columnName": "assetSubCategoryKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetSubCategoryId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Subcategorylang",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`assetSubCategoryId` INTEGER NOT NULL, `assetSubCategoryLangId` INTEGER NOT NULL, `assetSubCategoryLangKey` TEXT NOT NULL, `assetSubCategoryName` TEXT NOT NULL, `assetSubCategoryShortName` TEXT NOT NULL, `languageId` INTEGER NOT NULL, PRIMARY KEY(`assetSubCategoryLangId`))",
+        "fields": [
+          {
+            "fieldPath": "assetSubCategoryId",
+            "columnName": "assetSubCategoryId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetSubCategoryLangId",
+            "columnName": "assetSubCategoryLangId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetSubCategoryLangKey",
+            "columnName": "assetSubCategoryLangKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetSubCategoryName",
+            "columnName": "assetSubCategoryName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetSubCategoryShortName",
+            "columnName": "assetSubCategoryShortName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "languageId",
+            "columnName": "languageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetSubCategoryLangId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Detail",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`assetFrequencyDetailModels` TEXT NOT NULL, `completedCount` INTEGER NOT NULL, `onHoldCount` INTEGER NOT NULL, `openCount` INTEGER NOT NULL, `weekNo` TEXT NOT NULL, `startDateofWeek` TEXT NOT NULL, `endDateofWeek` TEXT NOT NULL, PRIMARY KEY(`weekNo`))",
+        "fields": [
+          {
+            "fieldPath": "assetFrequencyDetailModels",
+            "columnName": "assetFrequencyDetailModels",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedCount",
+            "columnName": "completedCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "onHoldCount",
+            "columnName": "onHoldCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "openCount",
+            "columnName": "openCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weekNo",
+            "columnName": "weekNo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startDateofWeek",
+            "columnName": "startDateofWeek",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endDateofWeek",
+            "columnName": "endDateofWeek",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "weekNo"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Frequency",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER NOT NULL, `cDate` TEXT NOT NULL, `colorCode` TEXT NOT NULL, `cuid` INTEGER NOT NULL, `frequencyId` INTEGER NOT NULL, `frequencyKey` TEXT NOT NULL, `mDate` TEXT NOT NULL, `muid` INTEGER NOT NULL, `noofDays` INTEGER NOT NULL, `noofMonths` INTEGER NOT NULL, `version` TEXT NOT NULL, PRIMARY KEY(`frequencyId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorCode",
+            "columnName": "colorCode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyId",
+            "columnName": "frequencyId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyKey",
+            "columnName": "frequencyKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "noofDays",
+            "columnName": "noofDays",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "noofMonths",
+            "columnName": "noofMonths",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "frequencyId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Frequencylang",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`frequencyId` INTEGER NOT NULL, `frequencyLangId` INTEGER NOT NULL, `frequencyLangKey` TEXT NOT NULL, `frequencyName` TEXT NOT NULL, `frequencyShortName` TEXT NOT NULL, `languageId` INTEGER NOT NULL, PRIMARY KEY(`frequencyLangId`))",
+        "fields": [
+          {
+            "fieldPath": "frequencyId",
+            "columnName": "frequencyId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyLangId",
+            "columnName": "frequencyLangId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyLangKey",
+            "columnName": "frequencyLangKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyName",
+            "columnName": "frequencyName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyShortName",
+            "columnName": "frequencyShortName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "languageId",
+            "columnName": "languageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "frequencyLangId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Workingstatus",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER NOT NULL, `cDate` TEXT NOT NULL, `colorCode` TEXT NOT NULL, `cuid` INTEGER NOT NULL, `mDate` TEXT NOT NULL, `muid` INTEGER NOT NULL, `version` TEXT NOT NULL, `workingStatus` TEXT NOT NULL, `workingStatusId` INTEGER NOT NULL, `workingStatusKey` TEXT NOT NULL, PRIMARY KEY(`workingStatusId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colorCode",
+            "columnName": "colorCode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cuid",
+            "columnName": "cuid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workingStatus",
+            "columnName": "workingStatus",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workingStatusId",
+            "columnName": "workingStatusId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workingStatusKey",
+            "columnName": "workingStatusKey",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "workingStatusId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Assetworkorder",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER NOT NULL, `assetId` INTEGER NOT NULL, `assetMaintainTypeId` INTEGER NOT NULL, `assetWorkOrderId` INTEGER NOT NULL, `assetWorkOrderKey` TEXT NOT NULL, `cDate` TEXT NOT NULL, `cuId` INTEGER NOT NULL, `frequencyId` INTEGER NOT NULL, `mDate` TEXT NOT NULL, `muid` INTEGER NOT NULL, `version` TEXT NOT NULL, `workOrder` TEXT NOT NULL, PRIMARY KEY(`assetWorkOrderId`))",
+        "fields": [
+          {
+            "fieldPath": "activeStatus",
+            "columnName": "activeStatus",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetId",
+            "columnName": "assetId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetMaintainTypeId",
+            "columnName": "assetMaintainTypeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetWorkOrderId",
+            "columnName": "assetWorkOrderId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assetWorkOrderKey",
+            "columnName": "assetWorkOrderKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cDate",
+            "columnName": "cDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cuId",
+            "columnName": "cuId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frequencyId",
+            "columnName": "frequencyId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mDate",
+            "columnName": "mDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muid",
+            "columnName": "muid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workOrder",
+            "columnName": "workOrder",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "assetWorkOrderId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3abdefcee13da33f18be474749eb7d92')"
+    ]
+  }
+}

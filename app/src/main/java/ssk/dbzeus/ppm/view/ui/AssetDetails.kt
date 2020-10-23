@@ -11,6 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vincent.filepicker.Constant
+import com.vincent.filepicker.activity.BaseActivity.IS_NEED_FOLDER_LIST
+import com.vincent.filepicker.activity.ImagePickActivity
+import com.vincent.filepicker.activity.ImagePickActivity.IS_NEED_CAMERA
+import com.vincent.filepicker.filter.entity.ImageFile
 import kotlinx.android.synthetic.main.activity_asset_details.*
 import org.angmarch.views.NiceSpinner
 import ssk.dbzeus.ppm.R
@@ -23,7 +28,8 @@ import ssk.dbzeus.ppm.view.adapter.WorkOrderAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AssetDetails : BaseActivity() {
+
+open class AssetDetails : BaseActivity() {
     lateinit var textWeek: TextView
     lateinit var textFreq: TextView
     lateinit var textStatusUpdate: TextView
@@ -31,6 +37,9 @@ class AssetDetails : BaseActivity() {
     lateinit var textAssetName: EditText
     private lateinit var assetStatus: EditText
     lateinit var buttonBreakdown: Button
+    lateinit var buttonBeforeImage: Button
+    lateinit var buttonAfterImage: Button
+    lateinit var buttonSignature: Button
     lateinit var spinnerStatus: NiceSpinner
     private lateinit var objectViewModel: ObjectViewModel
 
@@ -40,6 +49,7 @@ class AssetDetails : BaseActivity() {
     private lateinit var selectedWeek: String
     private lateinit var freqList: ArrayList<Frequencylang>
     private lateinit var statusList: ArrayList<Workingstatus>
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +70,9 @@ class AssetDetails : BaseActivity() {
         textStatusUpdate = findViewById(R.id.textStatusUpdate)
         spinnerStatus = findViewById(R.id.spinnerStatus)
         buttonBreakdown = findViewById(R.id.buttonBreakdown)
+        buttonBeforeImage = findViewById(R.id.beforeImage)
+        buttonAfterImage = findViewById(R.id.afterImage)
+        buttonSignature = findViewById(R.id.sigImage)
 
         recyclerWorkOrder = findViewById(R.id.recyclerWorkOrder)
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -116,6 +129,36 @@ class AssetDetails : BaseActivity() {
             intent.putExtra("SelectedWeek", selectedWeek)
             intent.putExtra("FrequencyList", freqList)
             startActivity(intent)
+        }
+        buttonBeforeImage.setOnClickListener {
+            val intent1 = Intent(this, ImagePickActivity::class.java)
+            intent1.putExtra(IS_NEED_CAMERA, true)
+            intent1.putExtra(Constant.MAX_NUMBER, 1)
+            intent1.putExtra(IS_NEED_FOLDER_LIST, true)
+            startActivityForResult(intent1, Constant.REQUEST_CODE_PICK_IMAGE)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            Constant.REQUEST_CODE_PICK_IMAGE -> if (resultCode == RESULT_OK) {
+                val list: ArrayList<ImageFile>? =
+                    data?.getParcelableArrayListExtra(Constant.RESULT_PICK_IMAGE)
+                val builder = StringBuilder()
+                if (list != null) {
+                    for (file in list) {
+                        val path = file.path
+                        builder.append(
+                            """$path""".trimIndent()
+                        )
+                    }
+                }
+                assetRemarks.setText(builder.toString())
+
+
+            }
+
         }
     }
 }

@@ -11,9 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ssk.dbzeus.ppm.service.model.asset.Category
-import ssk.dbzeus.ppm.service.model.entity.asset.Frequencylang
 import ssk.dbzeus.ppm.service.model.asset.Subcategory
-import ssk.dbzeus.ppm.service.model.entity.asset.Subcategorylang
 import ssk.dbzeus.ppm.service.model.dao.*
 import ssk.dbzeus.ppm.service.model.entity.asset.*
 import ssk.dbzeus.ppm.service.model.entity.userdata.Client
@@ -28,7 +26,7 @@ import ssk.dbzeus.ppm.utils.Converters
     (Building::class),(Buildinglang::class),(Floor::class),(Wing::class),(Space::class),
     (Asset::class),(Assetsmap::class),(Category::class),(Categorylang::class),
     (Subcategory::class),(Subcategorylang::class),(Detail::class),(Frequency::class),
-    (Frequencylang::class),(Workingstatus::class), (Assetworkorder::class)], version = 13, exportSchema = true)
+    (Frequencylang::class),(Workingstatus::class), (Assetworkorder::class)], version = 1, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDb : RoomDatabase() {
     abstract fun userDao(): UserDao
