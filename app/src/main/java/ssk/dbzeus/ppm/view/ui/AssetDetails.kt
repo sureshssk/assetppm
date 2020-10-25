@@ -44,7 +44,7 @@ open class AssetDetails : BaseActivity() {
     lateinit var buttonBreakdown: Button
     lateinit var buttonBeforeImage: ImageView
     lateinit var buttonAfterImage: ImageView
-    lateinit var Sigimgview: ImageView
+    lateinit var signImageView: ImageView
     lateinit var llSignature: LinearLayout
     lateinit var spinnerStatus: NiceSpinner
     private lateinit var objectViewModel: ObjectViewModel
@@ -81,7 +81,7 @@ open class AssetDetails : BaseActivity() {
         buttonBreakdown = findViewById(R.id.buttonBreakdown)
         buttonBeforeImage = findViewById(R.id.beforeImage)
         buttonAfterImage = findViewById(R.id.afterImage)
-        Sigimgview = findViewById(R.id.Sigimgview)
+        signImageView = findViewById(R.id.Sigimgview)
         llSignature = findViewById(R.id.llSignature)
         submitButton = findViewById(R.id.buttonSubmit)
 
@@ -160,7 +160,7 @@ open class AssetDetails : BaseActivity() {
             loginUserID = sharedPreferences.getInt("USERID", 0)
             workOrderAdapter.getAssetWorkOrderList();
             var arrayListItem: ArrayList<WorkorderListItem> = ArrayList()
-            var spareListitem: ArrayList<sparedataItem> = ArrayList()
+            var spareListitem: ArrayList<SpareDataItem> = ArrayList()
             for (assetWorkOrder in workOrderAdapter.getAssetWorkOrderList()) {
 
                 val workorderListItem = WorkorderListItem(
@@ -170,7 +170,8 @@ open class AssetDetails : BaseActivity() {
                 arrayListItem.add(workorderListItem)
             }
             val workorderList = WorkorderList(arrayListItem)
-            val spareDataList = sparedata(spareListitem)
+            val spareDataList = SpareDataList(spareListitem)
+
             val finalData = FinalDBdata(
                 selectedAsset.assetFrequencyDetailId!!,
                 selectedAsset.assetFrequencyDetailKey!!,
@@ -184,6 +185,9 @@ open class AssetDetails : BaseActivity() {
                 spareDataList,
                 ""
             )
+
+            //TODO Final DB will be inserted
+            //TODO Create Background Service in java and sync data with API
             AsyncTask.execute {
                 AppDb.getInstance(this).finalDataDao().insertSingle(
                     finalData
@@ -202,7 +206,7 @@ open class AssetDetails : BaseActivity() {
                 val imgFile = File(image_path)
                 if (imgFile.exists()) {
                     val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
-                    Sigimgview.setImageBitmap(myBitmap)
+                    signImageView.setImageBitmap(myBitmap)
                     val imgSigntureba64 = Utils.bitmaptoBase(myBitmap)
                     SigantureString = image_path
                 }
