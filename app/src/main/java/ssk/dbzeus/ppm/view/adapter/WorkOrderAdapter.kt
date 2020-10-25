@@ -21,7 +21,11 @@ class WorkOrderAdapter(
         if (workOrderList[index] != null) {
             val workOrder = workOrderList[index]
             woHolder.textWo.text = workOrder.workOrder
+            woHolder.checkWo.setOnCheckedChangeListener { buttonView, isChecked ->
+                workOrder.isCompleted = isChecked
+            }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkOrderHolder {
@@ -40,4 +44,7 @@ class WorkOrderAdapter(
         val checkWo: CheckBox = view.findViewById(R.id.checkWorkOrder)
     }
 
+    fun getAssetWorkOrderList(): ArrayList<Assetworkorder> {
+        return workOrderList;
+    }
 }

@@ -1,17 +1,20 @@
 package ssk.dbzeus.ppm.utils
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.GradientDrawable
 import android.net.ConnectivityManager
 import android.os.Build
+import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.util.Patterns
 import android.util.TypedValue
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import java.io.ByteArrayOutputStream
 import java.io.UnsupportedEncodingException
 import java.util.*
@@ -23,12 +26,15 @@ object Utils {
     private val PREF_UNIQUE_ID = "PREF_UNIQUE_ID"
 
 
+
+
+
     fun baseTobitmap(base64String: String): Bitmap {
         val imageBytes = Base64.decode(base64String, Base64.DEFAULT)
         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
     }
 
-    fun bitmaptoBase(bitmap : Bitmap): String{
+    fun bitmaptoBase(bitmap: Bitmap): String{
         val byteArrayOutputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
@@ -62,9 +68,19 @@ object Utils {
         shape.cornerRadius = 10f
         return shape
     }
+    fun newIntentWithResult(
+        context: Context,
+        destinationClass: Class<*>?,
+        bundle: Bundle?,
+        requestCode: Int
+    ) {
+        val intent = Intent(context, destinationClass)
+        intent.putExtras(bundle!!)
+        (context as AppCompatActivity).startActivityForResult(intent, requestCode)
+    }
 
     fun Int.toDp(context: Context):Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
     ).toInt()
 
     @Synchronized

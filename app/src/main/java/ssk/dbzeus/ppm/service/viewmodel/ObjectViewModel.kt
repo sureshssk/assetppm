@@ -9,6 +9,7 @@ import ssk.dbzeus.ppm.AppDb
 import ssk.dbzeus.ppm.service.model.entity.asset.Assetworkorder
 import ssk.dbzeus.ppm.service.model.entity.asset.Frequencylang
 import ssk.dbzeus.ppm.service.model.entity.asset.Workingstatus
+import ssk.dbzeus.ppm.service.model.entity.insertdata.FinalDBdata
 import ssk.dbzeus.ppm.service.model.entity.userdata.Client
 import ssk.dbzeus.ppm.service.model.entity.userdata.Department
 import ssk.dbzeus.ppm.service.model.entity.userdata.Facility
@@ -42,6 +43,10 @@ class ObjectViewModel(application: Application) : AndroidViewModel(application) 
     fun getFacilityData(clientId :Int,application: Application) :LiveData<List<Facility>>{
         val facilityDAO = AppDb.getInstance(application, viewModelScope).facilityDao()
         return repository.facilityData(facilityDAO, clientId)
+    }
+    fun getFinalData(LogInUserId :Int,application: Application) :LiveData<List<FinalDBdata>>{
+        val finalDataDao = AppDb.getInstance(application, viewModelScope).finalDataDao()
+        return repository.finalData(finalDataDao, LogInUserId)
     }
     fun getDepartmentData(clientId :Int,application: Application) :LiveData<List<Department>>{
         val deptDAO = AppDb.getInstance(application, viewModelScope).departmentDao()

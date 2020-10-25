@@ -14,6 +14,7 @@ import ssk.dbzeus.ppm.service.model.asset.Category
 import ssk.dbzeus.ppm.service.model.asset.Subcategory
 import ssk.dbzeus.ppm.service.model.dao.*
 import ssk.dbzeus.ppm.service.model.entity.asset.*
+import ssk.dbzeus.ppm.service.model.entity.insertdata.FinalDBdata
 import ssk.dbzeus.ppm.service.model.entity.userdata.Client
 import ssk.dbzeus.ppm.service.model.entity.userdata.Department
 import ssk.dbzeus.ppm.service.model.entity.userdata.Facility
@@ -22,11 +23,15 @@ import ssk.dbzeus.ppm.service.model.entity.weekassets.Detail
 import ssk.dbzeus.ppm.utils.Converters
 
 
-@Database(entities = [(UserInfo::class),(Client::class),(Department::class), (Facility::class),
-    (Building::class),(Buildinglang::class),(Floor::class),(Wing::class),(Space::class),
-    (Asset::class),(Assetsmap::class),(Category::class),(Categorylang::class),
-    (Subcategory::class),(Subcategorylang::class),(Detail::class),(Frequency::class),
-    (Frequencylang::class),(Workingstatus::class), (Assetworkorder::class)], version = 1, exportSchema = true)
+@Database(
+    entities = [(UserInfo::class), (Client::class), (Department::class), (Facility::class),
+        (Building::class), (Buildinglang::class), (Floor::class), (Wing::class), (Space::class),
+        (Asset::class), (Assetsmap::class), (Category::class), (Categorylang::class),
+        (Subcategory::class), (Subcategorylang::class), (Detail::class), (Frequency::class),
+        (Frequencylang::class), (Workingstatus::class), (Assetworkorder::class), FinalDBdata::class],
+    version = 1,
+    exportSchema = true
+)
 @TypeConverters(Converters::class)
 abstract class AppDb : RoomDatabase() {
     abstract fun userDao(): UserDao
@@ -46,12 +51,17 @@ abstract class AppDb : RoomDatabase() {
     abstract fun frequencyDao(): FrequencyDAO
     abstract fun workingStatusDao(): WorkingStatusDao
     abstract fun workOrderDao(): AssetWorkOrderDAO
+    abstract fun finalDataDao(): FinalDataDao
+
     companion object {
         private var sInstance: AppDb? = null
         private var dbPath = "/sdcard/AssetPPM/ASSETPPMDB"
+
         @Synchronized
-        fun getInstance(context: Context,
-                        scope: CoroutineScope): AppDb {
+        fun getInstance(
+            context: Context,
+            scope: CoroutineScope
+        ): AppDb {
             if (sInstance == null) {
                 sInstance = Room
                     .databaseBuilder(context.applicationContext, AppDb::class.java, dbPath)
@@ -86,7 +96,7 @@ abstract class AppDb : RoomDatabase() {
                 // If you want to keep the data through app restarts,
                 // comment out the following line.
                 sInstance?.let {
-                    scope.launch (Dispatchers.IO) {
+                    scope.launch(Dispatchers.IO) {
                     }
                 }
             }

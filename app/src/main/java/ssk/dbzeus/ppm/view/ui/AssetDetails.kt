@@ -1,45 +1,51 @@
 package ssk.dbzeus.ppm.view.ui
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vincent.filepicker.Constant
-import com.vincent.filepicker.activity.BaseActivity.IS_NEED_FOLDER_LIST
-import com.vincent.filepicker.activity.ImagePickActivity
-import com.vincent.filepicker.activity.ImagePickActivity.IS_NEED_CAMERA
-import com.vincent.filepicker.filter.entity.ImageFile
 import kotlinx.android.synthetic.main.activity_asset_details.*
 import org.angmarch.views.NiceSpinner
+import ssk.dbzeus.ppm.AppDb
 import ssk.dbzeus.ppm.R
 import ssk.dbzeus.ppm.service.model.entity.asset.Assetworkorder
 import ssk.dbzeus.ppm.service.model.entity.asset.Frequencylang
 import ssk.dbzeus.ppm.service.model.entity.asset.Workingstatus
+import ssk.dbzeus.ppm.service.model.entity.insertdata.*
+import ssk.dbzeus.ppm.service.model.entity.userdata.UserInfo
 import ssk.dbzeus.ppm.service.model.entity.weekassets.AssetFrequencyDetailModel
 import ssk.dbzeus.ppm.service.viewmodel.ObjectViewModel
+import ssk.dbzeus.ppm.utils.Utils
 import ssk.dbzeus.ppm.view.adapter.WorkOrderAdapter
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 open class AssetDetails : BaseActivity() {
+
+    private var loginUserID: Int = 0
     lateinit var textWeek: TextView
     lateinit var textFreq: TextView
     lateinit var textStatusUpdate: TextView
     lateinit var textAssetNo: EditText
     lateinit var textAssetName: EditText
+    lateinit var submitButton: Button
     private lateinit var assetStatus: EditText
     lateinit var buttonBreakdown: Button
-    lateinit var buttonBeforeImage: Button
-    lateinit var buttonAfterImage: Button
-    lateinit var buttonSignature: Button
+    lateinit var buttonBeforeImage: ImageView
+    lateinit var buttonAfterImage: ImageView
+    lateinit var Sigimgview: ImageView
+    lateinit var llSignature: LinearLayout
     lateinit var spinnerStatus: NiceSpinner
     private lateinit var objectViewModel: ObjectViewModel
 
@@ -49,6 +55,9 @@ open class AssetDetails : BaseActivity() {
     private lateinit var selectedWeek: String
     private lateinit var freqList: ArrayList<Frequencylang>
     private lateinit var statusList: ArrayList<Workingstatus>
+    private val IMAGE_SIGNATURE = 700
+    private var SigantureString: String? = null
+    private lateinit var workOrderAdapter: WorkOrderAdapter
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +66,7 @@ open class AssetDetails : BaseActivity() {
         initToolbar()
         setTitle("Asset Details")
         val bundle: Bundle? = intent.extras
-        //val userInfo = bundle!!.getSerializable("UserInfo") as? UserInfo
+        val userInfo = bundle!!.getSerializable("UserInfo") as? UserInfo
         selectedAsset = bundle!!.getSerializable("SelectedAsset") as AssetFrequencyDetailModel
         selectedWeek = bundle!!.getString("SelectedWeek").toString()
         freqList = bundle!!.getSerializable("FrequencyList") as ArrayList<Frequencylang>
@@ -72,7 +81,9 @@ open class AssetDetails : BaseActivity() {
         buttonBreakdown = findViewById(R.id.buttonBreakdown)
         buttonBeforeImage = findViewById(R.id.beforeImage)
         buttonAfterImage = findViewById(R.id.afterImage)
-        buttonSignature = findViewById(R.id.sigImage)
+        Sigimgview = findViewById(R.id.Sigimgview)
+        llSignature = findViewById(R.id.llSignature)
+        submitButton = findViewById(R.id.buttonSubmit)
 
         recyclerWorkOrder = findViewById(R.id.recyclerWorkOrder)
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -119,7 +130,7 @@ open class AssetDetails : BaseActivity() {
         objectViewModel.getAllWorkOrder(selectedAsset.assetId!!, this)
             .observe(this, Observer { woList ->
                 woList?.let { it ->
-                    val workOrderAdapter = WorkOrderAdapter(it as ArrayList<Assetworkorder>, this)
+                    workOrderAdapter = WorkOrderAdapter(it as ArrayList<Assetworkorder>, this)
                     recyclerWorkOrder.adapter = workOrderAdapter
                 }
             })
@@ -131,33 +142,72 @@ open class AssetDetails : BaseActivity() {
             startActivity(intent)
         }
         buttonBeforeImage.setOnClickListener {
-            val intent1 = Intent(this, ImagePickActivity::class.java)
-            intent1.putExtra(IS_NEED_CAMERA, true)
-            intent1.putExtra(Constant.MAX_NUMBER, 1)
-            intent1.putExtra(IS_NEED_FOLDER_LIST, true)
-            startActivityForResult(intent1, Constant.REQUEST_CODE_PICK_IMAGE)
+
         }
+        buttonAfterImage.setOnClickListener {
+
+        }
+        llSignature.setOnClickListener {
+            Utils.newIntentWithResult(
+                this,
+                SignatureActivity::class.java,
+                Bundle.EMPTY,
+                IMAGE_SIGNATURE
+            )
+        }
+        submitButton.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("ASSETBBM", Context.MODE_PRIVATE)
+            loginUserID = sharedPreferences.getInt("USERID", 0)
+            workOrderAdapter.getAssetWorkOrderList();
+            var arrayListItem: ArrayList<WorkorderListItem> = ArrayList()
+            var spareListitem: ArrayList<sparedataItem> = ArrayList()
+            for (assetWorkOrder in workOrderAdapter.getAssetWorkOrderList()) {
+
+                val workorderListItem = WorkorderListItem(
+                    assetWorkOrder.assetWorkOrderId.toString(),
+                    assetWorkOrder.isCompleted.toString()
+                )
+                arrayListItem.add(workorderListItem)
+            }
+            val workorderList = WorkorderList(arrayListItem)
+            val spareDataList = sparedata(spareListitem)
+            val finalData = FinalDBdata(
+                selectedAsset.assetFrequencyDetailId!!,
+                selectedAsset.assetFrequencyDetailKey!!,
+                "",
+                "",
+                loginUserID,
+                "",
+                "",
+                "",
+                workorderList,
+                spareDataList,
+                ""
+            )
+            AsyncTask.execute {
+                AppDb.getInstance(this).finalDataDao().insertSingle(
+                    finalData
+                )
+            }
+        }
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
-            Constant.REQUEST_CODE_PICK_IMAGE -> if (resultCode == RESULT_OK) {
-                val list: ArrayList<ImageFile>? =
-                    data?.getParcelableArrayListExtra(Constant.RESULT_PICK_IMAGE)
-                val builder = StringBuilder()
-                if (list != null) {
-                    for (file in list) {
-                        val path = file.path
-                        builder.append(
-                            """$path""".trimIndent()
-                        )
-                    }
+            IMAGE_SIGNATURE -> if (resultCode == RESULT_OK) {
+                val image_path = data!!.getStringExtra("imagePath")
+                val imgFile = File(image_path)
+                if (imgFile.exists()) {
+                    val myBitmap = BitmapFactory.decodeFile(imgFile.absolutePath)
+                    Sigimgview.setImageBitmap(myBitmap)
+                    val imgSigntureba64 = Utils.bitmaptoBase(myBitmap)
+                    SigantureString = image_path
                 }
-                assetRemarks.setText(builder.toString())
-
-
             }
+
 
         }
     }

@@ -18,4 +18,6 @@ data class Assetworkorder(
     val muid: Int,
     val version: String,
     val workOrder: String
-):Serializable
+) : Serializable {
+    var isCompleted: Boolean = false
+}

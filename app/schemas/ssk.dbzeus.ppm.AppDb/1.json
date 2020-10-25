@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3abdefcee13da33f18be474749eb7d92",
+    "identityHash": "5c8e7c80104e0782fed0248f9ccfd619",
     "entities": [
       {
         "tableName": "UserInfo",
@@ -1712,8 +1712,14 @@
       },
       {
         "tableName": "Assetworkorder",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activeStatus` INTEGER NOT NULL, `assetId` INTEGER NOT NULL, `assetMaintainTypeId` INTEGER NOT NULL, `assetWorkOrderId` INTEGER NOT NULL, `assetWorkOrderKey` TEXT NOT NULL, `cDate` TEXT NOT NULL, `cuId` INTEGER NOT NULL, `frequencyId` INTEGER NOT NULL, `mDate` TEXT NOT NULL, `muid` INTEGER NOT NULL, `version` TEXT NOT NULL, `workOrder` TEXT NOT NULL, PRIMARY KEY(`assetWorkOrderId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`isCompleted` INTEGER NOT NULL, `activeStatus` INTEGER NOT NULL, `assetId` INTEGER NOT NULL, `assetMaintainTypeId` INTEGER NOT NULL, `assetWorkOrderId` INTEGER NOT NULL, `assetWorkOrderKey` TEXT NOT NULL, `cDate` TEXT NOT NULL, `cuId` INTEGER NOT NULL, `frequencyId` INTEGER NOT NULL, `mDate` TEXT NOT NULL, `muid` INTEGER NOT NULL, `version` TEXT NOT NULL, `workOrder` TEXT NOT NULL, PRIMARY KEY(`assetWorkOrderId`))",
         "fields": [
+          {
+            "fieldPath": "isCompleted",
+            "columnName": "isCompleted",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "activeStatus",
             "columnName": "activeStatus",
@@ -1795,12 +1801,92 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "FinalDBdata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`AssetFrequencyDetailId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `AssetFrequencyDetailKey` TEXT NOT NULL, `Description` TEXT NOT NULL, `Remark` TEXT NOT NULL, `LogInUserId` INTEGER NOT NULL, `AssetBeforeMaintenanceImage` TEXT NOT NULL, `AssetAfterMaintenanceImage` TEXT NOT NULL, `AttachmentImage` TEXT NOT NULL, `WorkOrderList` TEXT NOT NULL, `SpareList` TEXT NOT NULL, `AttachementName` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "AssetFrequencyDetailId",
+            "columnName": "AssetFrequencyDetailId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "AssetFrequencyDetailKey",
+            "columnName": "AssetFrequencyDetailKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Description",
+            "columnName": "Description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Remark",
+            "columnName": "Remark",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "LogInUserId",
+            "columnName": "LogInUserId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "AssetBeforeMaintenanceImage",
+            "columnName": "AssetBeforeMaintenanceImage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "AssetAfterMaintenanceImage",
+            "columnName": "AssetAfterMaintenanceImage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "AttachmentImage",
+            "columnName": "AttachmentImage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "WorkOrderList",
+            "columnName": "WorkOrderList",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "SpareList",
+            "columnName": "SpareList",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "AttachementName",
+            "columnName": "AttachementName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "AssetFrequencyDetailId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3abdefcee13da33f18be474749eb7d92')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5c8e7c80104e0782fed0248f9ccfd619')"
     ]
   }
 }

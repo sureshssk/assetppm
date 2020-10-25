@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtvew"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="Signature Here"
+        android:textColor="@color/colorAccentWhite"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:id="@+id/canvasLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonLayout"
+        android:layout_below="@+id/txtvew"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/colorTextGrey"
+            android:text="cancel"
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/colorTextGrey"
+            android:text="clear"
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/getsign"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/colorTextGrey"
+            android:text="save"
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</RelativeLayout>

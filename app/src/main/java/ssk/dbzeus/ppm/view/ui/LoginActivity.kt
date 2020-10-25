@@ -1,5 +1,6 @@
 package ssk.dbzeus.ppm.view.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Build
@@ -8,8 +9,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_login.*
@@ -24,11 +23,11 @@ import ssk.dbzeus.ppm.service.repository.APIService
 import ssk.dbzeus.ppm.service.repository.RetrofitInstance
 import ssk.dbzeus.ppm.service.viewmodel.ObjectViewModel
 import ssk.dbzeus.ppm.utils.Utils
-import ssk.dbzeus.ppm.view.adapter.AssetListAdapter
 
 
 class LoginActivity : BaseActivity() {
     private lateinit var objectViewModel: ObjectViewModel
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,31 +62,31 @@ class LoginActivity : BaseActivity() {
         var userData: UserInfo
 
 
-
         //userInfo
-        objectViewModel.getUserInfo(username,password,application).observe(this@LoginActivity, Observer { assetList ->
-            assetList?.let {
-                if (it != null) {
-                    Toast.makeText(
-                        applicationContext,
-                        "Offline Login Success",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    AssetPPMApp.setUser(it)
-                    val bundleData = Bundle()
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    bundleData.putSerializable("UserInfo", it)
-                    intent.putExtras(bundleData)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        "Offline Login Failed",
-                        Toast.LENGTH_SHORT
-                    ).show()
+        objectViewModel.getUserInfo(username, password, application)
+            .observe(this@LoginActivity, Observer { assetList ->
+                assetList?.let {
+                    if (it != null) {
+                        Toast.makeText(
+                            applicationContext,
+                            "Offline Login Success",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        AssetPPMApp.setUser(it)
+                        val bundleData = Bundle()
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        bundleData.putSerializable("UserInfo", it)
+                        intent.putExtras(bundleData)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Offline Login Failed",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            }
-        })
+            })
 
         /*AsyncTask.execute {
             userData =
@@ -165,9 +164,12 @@ class LoginActivity : BaseActivity() {
                             AppDb.getInstance(this@LoginActivity).userDao().insertAll(
                                 it
                             )
+                            val sharedPreferences = getSharedPreferences("ASSETBBM", Context.MODE_PRIVATE)
+                            sharedPreferences.edit().putInt("USERID", it.userId).apply()
                             AssetPPMApp.setUser(it)
                             val bundleData = Bundle()
-                            intentMainActivity = Intent(applicationContext, MainActivity::class.java)
+                            intentMainActivity =
+                                Intent(applicationContext, MainActivity::class.java)
                             bundleData.putSerializable("UserInfo", it)
                             intentMainActivity.putExtras(bundleData)
                             startActivity(intentMainActivity)
